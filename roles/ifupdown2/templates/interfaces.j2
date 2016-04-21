@@ -1,33 +1,34 @@
-{% set node = interfaces[ansible_hostname] %}
+{% set intvars = interfaces[ansible_hostname] %}
 {% set bridgevars = bridges[ansible_hostname] -%}
-{% set SVIs = SVIs[ansible_hostname] -%}
+{% set svivars = SVIs[ansible_hostname] -%}
 
 #Configured by Ansible
 
 auto eth0
 iface eth0 inet dhcp
 
-{% for interface in node.keys() -%}
+{% for interface in intvars.keys() -%}
 auto {{interface}}
 {% if interface == "lo" -%}
 iface lo inet loopback
 {% else %}
 iface {{interface}}
 {% endif -%}
-{% if node[interface].ipv4 is defined %}
-  address {{node[interface].ipv4}}
+{% if intvars[interface].ipv4 is defined %}
+  address {{intvars[interface].ipv4}}
 {% endif -%}
-{% if node[interface].ipv6 is defined %}
-  address {{node[interface].ipv6}}
+{% if intvars[interface].ipv6 is defined %}
+  address {{intvars[interface].ipv6}}
 {% endif %}
-{% if node[interface].alias is defined %}
-  alias {{ node[interface].alias }}
+{% if intvars[interface].alias is defined %}
+  alias {{ intvars[interface].alias }}
 {% endif %}
-{% if node[interface].mtu is defined %}
-  mtu {{ node[interface].mtu }}
+{% if intvars[interface].mtu is defined %}
+  mtu {{ intvars[interface].mtu }}
 {% endif %}
 {% endfor -%}
 
+{% if ansible_hostname in  %}
 {% for bridge in bridgevars.keys() -%}
 auto {{bridgevars[bridge].name}}
 iface {{bridgevars[bridge].name}}
@@ -39,12 +40,15 @@ iface {{bridgevars[bridge].name}}
   bridge-pvid 1
 {% endif %}
 {% endfor %}
+{% endif %}
 
-{% for svi in SVIs.keys() %}
-auto {{SVIs[svi].name}}
-iface {{SVIs[svi].name}}
-  address {{SVIs[svi].ip}}
-{% if SVIs[svi].virtual is defined %}
-  address-virtual {{SVIs[svi].mac}} {{SVIs[svi].virtual}}
+{% if ansible_hostname in SVIs %}
+{% for svi in svivars.keys() %}
+auto {{svivars[svi].name}}
+iface {{svivars[svi].name}}
+  address {{svivars[svi].ip}}
+{% if svivars[svi].virtual is defined %}
+  address-virtual {{svivars[svi].mac}} {{svivars[svi].virtual}}
 {% endif %}
 {% endfor %}
+{% endif %}
