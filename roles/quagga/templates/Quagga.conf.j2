@@ -9,7 +9,7 @@ interface {{ port }}
 {% endfor %}
 router bgp {{ fabricvars.asn }}
     bgp router-id {{ intvars['lo'].ipv4 }}
-    network {{ intvars['lo'].ipv4 }}
+    network {{ intvars['lo'].ipv4 }}/32
 {% if fabricvars.networks is defined %}
 {% for network in fabricvars.networks %}
     network {{ network }}

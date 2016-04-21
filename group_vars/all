@@ -29,7 +29,7 @@ fabric:
 interfaces:
     leaf01:
         lo:
-            ipv4: "10.0.0.11/32"
+            ipv4: "10.0.0.11"
         swp1:
             mtu: "9216"
         swp2:
@@ -40,7 +40,7 @@ interfaces:
             mtu: "9216"
     leaf02:
         lo:
-            ipv4: "10.0.0.12/32"
+            ipv4: "10.0.0.12"
         swp1:
             mtu: "9216"
         swp2:
@@ -51,14 +51,14 @@ interfaces:
             mtu: "9216"
     spine01:
         lo:
-            ipv4: "10.0.0.21/32"
+            ipv4: "10.0.0.21"
         swp1:
             mtu: "9216"
         swp2:
             mtu: "9216"
     spine02:
         lo:
-            ipv4: "10.0.0.22/32"
+            ipv4: "10.0.0.22"
         swp1:
             mtu: "9216"
         swp2:
