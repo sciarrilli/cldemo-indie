@@ -4,3 +4,6 @@
 - name: configure /etc/network/interfaces
   template: src=interfaces.j2 dest=/etc/network/interfaces
   notify: reload networking
+
+- name: reload networking
+  shell: "ifreload -a"
