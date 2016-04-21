@@ -28,7 +28,7 @@ iface {{interface}}
 {% endif %}
 {% endfor -%}
 
-{% if ansible_hostname in  %}
+{% if ansible_hostname in bridges  %}
 {% for bridge in bridgevars.keys() -%}
 auto {{bridgevars[bridge].name}}
 iface {{bridgevars[bridge].name}}
