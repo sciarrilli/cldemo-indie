@@ -1,46 +1,68 @@
-# networking
-networks:
-    "172.16.1.0/24":
-        source: "leaf01"
-    "172.16.2.0/24":
-        source: "leaf02"
+# bgp fabric
+fabric:
+    leaf01:
+        asn: 65011
+        fabricports:
+            swp51:
+            swp52:
+        networks:
+            "172.16.1.0/24":
+    leaf02:
+        asn: 65012
+        fabricports:
+            swp51:
+            swp52:
+        networks:
+            "172.16.2.0/24":
+    spine01:
+        asn: 65020
+        fabricports:
+            swp1:
+            swp2:
+    spine02:
+        asn: 65020
+        fabricports:
+            swp1:
+            swp2:
+
+# interfaces
 interfaces:
     leaf01:
-        loopback: "10.0.0.11"
-        asn: 65011
-        networks:
-            br0:
-                ip: "172.16.1.1/24"
-                ports: ["swp1"]
-        neighbors:
-            swp51:
-            swp52:
+        lo:
+            ipv4: "10.0.0.11/32"
+        swp1:
+            mtu: "9216"
+        swp2:
+            mtu: "9216"
+        swp51:
+            mtu: "9216"
+        swp52:
+            mtu: "9216"
     leaf02:
-        loopback: "10.0.0.12"
-        asn: 65012
-        networks:
-            br0:
-                ip: "172.16.2.1/24"
-                ports: ["swp2"]
-        neighbors:
-            swp51:
-            swp52:
+        lo:
+            ipv4: "10.0.0.12/32"
+        swp1:
+            mtu: "9216"
+        swp2:
+            mtu: "9216"
+        swp51:
+            mtu: "9216"
+        swp52:
+            mtu: "9216"
     spine01:
-        loopback: "10.0.0.21"
-        asn: 65020
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
+        lo:
+            ipv4: "10.0.0.21/32"
+        swp1:
+            mtu: "9216"
+        swp2:
+            mtu: "9216"
     spine02:
-        loopback: "10.0.0.22"
-        asn: 65020
-        neighbors:
-            swp1:
-            swp2:
-            swp3:
-            swp4:
+        lo:
+            ipv4: "10.0.0.22/32"
+        swp1:
+            mtu: "9216"
+        swp2:
+            mtu: "9216"
     server01:
         neighbors:
             eth1:
@@ -53,3 +75,30 @@ interfaces:
                 ip: "172.16.2.101"
                 mask: "255.255.255.0"
                 gateway: "172.16.2.1"
+
+# bridges
+bridges:
+    leaf01:
+        bridge:
+            name: "bridge"
+            members: ["swp1","swp2"]
+            vlanaware: "yes"
+            vids: ["1-10"]
+    leaf02:
+        bridge:
+            name: "bridge"
+            members: ["swp1","swp2"]
+            vlanaware: "yes"
+            vids: ["1-10"]
+
+
+# SVIs
+SVIs:
+    leaf01:
+        v10:
+            name: "bridge.10"
+            ip: "172.16.1.1/24"
+    leaf02:
+        v10:
+            name: "bridge.10"
+            ip: "172.16.2.1/24"
