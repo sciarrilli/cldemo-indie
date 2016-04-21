@@ -26,6 +26,9 @@ iface {{interface}}
 {% if intvars[interface].mtu is defined %}
   mtu {{ intvars[interface].mtu }}
 {% endif %}
+{% if intvars[interface].accessvlan is defined %}
+  bridge-access {{intvars[interface].accessvlan}}
+{% endif %}
 {% endfor -%}
 
 {% if ansible_hostname in bridges  %}

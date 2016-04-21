@@ -34,6 +34,12 @@ interfaces:
             mtu: "9216"
         swp2:
             mtu: "9216"
+        swp3:
+            mtu: "9216"
+            accessvlan: "10"
+        swp4:
+            mtu: "9216"
+            accessvlan: "10"
         swp51:
             mtu: "9216"
         swp52:
@@ -45,6 +51,12 @@ interfaces:
             mtu: "9216"
         swp2:
             mtu: "9216"
+        swp3:
+            mtu: "9216"
+            accessvlan: "10"
+        swp4:
+            mtu: "9216"
+            accessvlan: "10"
         swp51:
             mtu: "9216"
         swp52:
