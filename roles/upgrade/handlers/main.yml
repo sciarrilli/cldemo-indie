@@ -4,9 +4,3 @@
 # short shell scripts fails and stops ansible if there is any output.
 - name: reboot cumulus
   shell: sudo reboot
-
-# This command actually restarts quagga. This command will actually drop all
-# routes currently in progress, so this will interrupt networking currently in
-# place.
-- name: restart quagga
-  service: name=quagga state=restarted
