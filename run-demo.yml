@@ -1,15 +1,10 @@
 ---
-- hosts: all
-  user: cumulus
-  become: yes
-  become_method: sudo
-  roles:
-    - base
 - hosts: leafs
   user: cumulus
   become: yes
   become_method: sudo
   roles:
+    - base
     - ifupdown2
     - quagga
 - hosts: spines
@@ -17,6 +12,7 @@
   become: yes
   become_method: sudo
   roles:
+    - base
     - ifupdown2
     - quagga
 - hosts: servers
