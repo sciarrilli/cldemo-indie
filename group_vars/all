@@ -93,13 +93,13 @@ bridges:
     leaf01:
         bridge:
             name: "bridge"
-            members: ["swp1","swp2"]
+            members: ["swp1","swp2","swp3","swp4"]
             vlanaware: "yes"
             vids: ["1-10"]
     leaf02:
         bridge:
             name: "bridge"
-            members: ["swp1","swp2"]
+            members: ["swp1","swp2","swp3","swp4"]
             vlanaware: "yes"
             vids: ["1-10"]
 

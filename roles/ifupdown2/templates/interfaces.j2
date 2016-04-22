@@ -29,7 +29,8 @@ iface {{interface}}
 {% if intvars[interface].accessvlan is defined %}
   bridge-access {{intvars[interface].accessvlan}}
 {% endif %}
-{% endfor -%}
+
+{% endfor %}
 
 {% if ansible_hostname in bridges  %}
 {% for bridge in bridgevars.keys() -%}
