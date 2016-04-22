@@ -5,4 +5,4 @@
 # Apt dist upgrade
 - name: apt dist upgrade
   apt: upgrade=dist
-  notify: reboot
+  notify: reboot cumulus
