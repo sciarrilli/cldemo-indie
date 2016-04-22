@@ -2,5 +2,8 @@
 # This command checks quagga before restarting it, just in case there are syntax
 # errors. The dryrun command will have output if there are problems, so this
 # short shell scripts fails and stops ansible if there is any output.
+
 - name: reboot cumulus
-  shell: sudo reboot
+  become: yes
+  become_method: sudo
+  shell: reboot
