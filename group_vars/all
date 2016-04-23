@@ -31,50 +31,50 @@ interfaces:
         lo:
             ipv4: "10.0.0.11"
         swp1:
-            mtu: "9216"
+            mtu: "1500"
         swp2:
-            mtu: "9216"
+            mtu: "1500"
         swp3:
-            mtu: "9216"
+            mtu: "1500"
             accessvlan: "10"
         swp4:
-            mtu: "9216"
+            mtu: "1500"
             accessvlan: "10"
         swp51:
-            mtu: "9216"
+            mtu: "1500"
         swp52:
-            mtu: "9216"
+            mtu: "1500"
     leaf02:
         lo:
             ipv4: "10.0.0.12"
         swp1:
-            mtu: "9216"
+            mtu: "1500"
         swp2:
-            mtu: "9216"
+            mtu: "1500"
         swp3:
-            mtu: "9216"
+            mtu: "1500"
             accessvlan: "10"
         swp4:
-            mtu: "9216"
+            mtu: "1500"
             accessvlan: "10"
         swp51:
-            mtu: "9216"
+            mtu: "1500"
         swp52:
-            mtu: "9216"
+            mtu: "1500"
     spine01:
         lo:
             ipv4: "10.0.0.21"
         swp1:
-            mtu: "9216"
+            mtu: "1500"
         swp2:
-            mtu: "9216"
+            mtu: "1500"
     spine02:
         lo:
             ipv4: "10.0.0.22"
         swp1:
-            mtu: "9216"
+            mtu: "1500"
         swp2:
-            mtu: "9216"
+            mtu: "1500"
     server01:
         neighbors:
             eth1:
